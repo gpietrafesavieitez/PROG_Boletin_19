@@ -39,7 +39,9 @@ public class Boletin_19_3 {
         for(int i = 0; i < ARRAYSIZE; i ++){ //  Cursor que recorrer el array listaNombresAlumnos en busca del nombre a buscar
             if(listaNombresAlumnos[i].equals(nomeAlumno)){         //  Si el nombre existe guarda la posicion para usarla en el otro array listaNotasAlumnos y devuelve la nota
                 return "Alumno encontrado:\n- Nombre: "+ nomeAlumno + "\n- Nota: " + listaNotasAlumnos[i] + " ptos.";
-            } 
+            }else{
+                return "Alumno no encontrado.";
+            }
         }
         return "Alumno no encontrado.";
     }
@@ -78,9 +80,14 @@ public class Boletin_19_3 {
 
     public static void main(String[] args) {
         try{
-            JOptionPane.showMessageDialog(null,buscarNotaAlumno(JOptionPane.showInputDialog(null,"Introduzca nombre del alumno: ","Buscador de notas",3)),"Buscador",1);
+            for(int i = 0; i < listaNombresAlumnos.length; i ++){
+                if(listaNombresAlumnos[i].equals("Pedro")){
+                    JOptionPane.showMessageDialog(null,"Pedro: " + listaNotasAlumnos[i],"Nota concreta",1);
+                }
+            }
             JOptionPane.showMessageDialog(null,mostrarListaAprobados(),"Lista de aprobados",1);
             JOptionPane.showMessageDialog(null,mostrarListaOrdenada(),"Lista ordenada",1);
+            JOptionPane.showMessageDialog(null,buscarNotaAlumno(JOptionPane.showInputDialog(null,"Introduzca nombre del alumno: ","Buscador de notas",3)),"Buscador",1);
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null,"El formato introducido no es el correcto.","Formato incorrecto",2);
         }
